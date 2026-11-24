@@ -1,0 +1,24 @@
+/run/initialize
+
+# Telescope orientation
+/detector/zenith 90 deg
+/detector/rebuild
+
+# Vis Engine Setup
+/vis/open VRML2FILE
+/vis/drawVolume
+/vis/scene/add/axes 0 0 0 0.22 m
+/vis/geometry/set/visibility World 0 false
+
+# Add Tracks to scene
+/vis/scene/add/trajectories smooth
+/vis/scene/endOfEventAction accumulate
+
+# Muon Source
+/muonSource/isotropic/surface hsphere
+/muonSource/isotropic/radius 1.4 m
+/muonSource/isotropic/momentum 2 GeV
+
+/run/beamOn 1000000
+
+/vis/viewer/flush

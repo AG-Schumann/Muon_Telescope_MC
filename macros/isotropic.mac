@@ -1,0 +1,10 @@
+/run/initialize
+
+#/muonSource/isotropic/surface plane
+#/muonSource/isotropic/size 5 m
+#/muonSource/isotropic/height 1.2 m
+/muonSource/isotropic/surface hsphere
+/muonSource/isotropic/radius 5 m
+/muonSource/isotropic/momentum 2 GeV
+
+/run/beamOn 1000000

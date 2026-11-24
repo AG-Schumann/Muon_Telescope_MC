@@ -1,0 +1,7 @@
+# Set Detector Geometry
+/detector/zenith 0 deg # Example: 0 degree zenith angle
+#/detector/azimuth 30 deg
+#/detector/rebuild # Apply geometry changes
+
+
+/control/execute macros/muon_hsphere.mac 

@@ -1,0 +1,26 @@
+# macros/optical_beam.mac
+# One vertical 2 GeV/c mu- through the panel centre, optical mode.
+# Run with:  ./Muon_Simulation -m macros/optical_beam.mac -o beam -g beam -p
+# The beam starts between the top panel (upper face at z = 108 cm) and the
+# inner top bar of the frame (lower face at z = 118 cm).
+
+/run/initialize
+/control/verbose 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+
+# Geometry: panels + light guides + PMT windows
+/detector/geometryMode 2
+/detector/optics/wrapping alfoil
+/detector/optics/pmmaGrade standard
+/detector/optics/storePhotons false
+/detector/rebuild
+
+# Beam
+/muonSource/beam/particle  mu-
+/muonSource/beam/momentum  2 GeV
+/muonSource/beam/position  0 0 1150 mm
+/muonSource/beam/direction 0 0 -1
+
+/run/beamOn 100

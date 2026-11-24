@@ -1,0 +1,27 @@
+# macros/zenith_scan_template.mac
+# ZENITH placeholder is replaced by the scan script.
+
+/run/initialize
+
+# Telescope orientation
+/detector/zenith ZENITH deg
+/detector/rebuild
+
+# Geometry-only VRML
+# drawVolume writes the geometry. No /vis/scene/add/trajectories, so nothing
+# is accumulated during the run and the .wrl stays a few hundred kB.
+/vis/open VRML2FILE
+/vis/drawVolume
+/vis/scene/add/axes 0 0 0 0.22 m
+/vis/geometry/set/visibility World 0 false
+/vis/viewer/flush
+
+# Disable visualisation before the production run
+/vis/disable
+
+# Muon source
+/muonSource/ecomug/surface hsphere
+/muonSource/ecomug/hsphereRadius 1.40 m
+/muonSource/ecomug/hsphereCenter 0 0 0 m
+
+/run/beamOn NEVENTS

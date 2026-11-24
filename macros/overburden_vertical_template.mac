@@ -1,0 +1,49 @@
+# Vertical telescope, scintillators only (mode 0), EcoMug 0.1-1000 GeV/c,
+# with or without the concrete floors of the high-rise building.
+#
+# Used by overburden_scan.sh, which replaces the placeholders:
+#   ROOF      true / false   (false = vacuum reference)
+#   NSLABS    number of floors above the room
+#   THICK     thickness of one floor slab in cm (G4_CONCRETE, 2.3 g/cm3)
+#   NEVENTS   number of generated muons
+#
+# The vacuum run and the concrete runs use the SAME generation plane and the
+# SAME seed (-r), so EcoMug generates the same muons in all of them and the
+# rate ratio can be taken event by event.
+#
+# Geometry of the slabs: stacked without gaps directly above the frame
+# (lower surface 1.30 m, the telescope world ends at 1.27 m). For wide
+# horizontal slabs and a uniform flux on the plane, the height of the slabs
+# and the gaps between the floors do not change the rate (see the comment in
+# DetectorConstruction.cc), but they would make the plane much larger.
+#
+# Generation plane: z = 2.81 m, 1 mm above the top of 5 x 30 cm, so one
+# plane serves every thickness up to 5 x 30 cm. Straight lines through both
+# outer panels start within |x|,|y| < 0.69 m of the axis at this height; the
+# half size of 1.2 m leaves 0.5 m for multiple scattering in the concrete.
+# Check with the x0, y0 of the four-fold muons that the distribution ends
+# well inside +-1.2 m.
+
+/run/initialize
+
+/detector/zenith  0 deg
+/detector/azimuth 0 deg
+/detector/geometryMode 0
+
+/detector/roof          ROOF
+/detector/roofSlabs     NSLABS
+/detector/roofThickness THICK cm
+/detector/roofSlabGap   0 m
+/detector/roofHeight    1.30 m
+/detector/roofHalfSize  2.0 m
+
+/detector/rebuild
+
+/muonSource/ecomug/surface     sky
+/muonSource/ecomug/skySizeX    2.4 m
+/muonSource/ecomug/skySizeY    2.4 m
+/muonSource/ecomug/skyCenter   0 0 2.81 m
+/muonSource/ecomug/minMomentum 0.1 GeV
+/muonSource/ecomug/maxMomentum 1000 GeV
+
+/run/beamOn NEVENTS

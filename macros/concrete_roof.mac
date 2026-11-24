@@ -1,0 +1,28 @@
+/detector/roof          true
+/detector/roofThickness 30 cm
+/detector/roofHeight    1.6 m
+/detector/roofHalfSize  1 m
+
+
+
+/detector/lead          true
+/detector/leadThickness 5 cm
+/detector/leadGap       10 cm
+
+/detector/rebuild
+
+
+
+/vis/open VRML2FILE
+#/vis/drawVolume
+/vis/scene/add/axes 0 0 0 0.22 m
+/vis/scene/add/trajectories smooth
+/vis/scene/endOfEventAction accumulate
+
+/vis/geometry/set/visibility World 0 false
+/vis/geometry/set/visibility TopPanelBox 0 false
+/vis/geometry/set/visibility BottomPanelBox 0 false
+
+#/vis/viewer/flush
+
+/control/execute macros/muon_flat.mac 

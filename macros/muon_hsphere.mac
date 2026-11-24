@@ -1,0 +1,27 @@
+# GeMSE Muon Telescope: EcoMug Direct Source Test Run
+# Kullanım: ./Muon_Simulation -m macros/muon_hsphere.mac -o output_name
+# (-s flag VERILMEZ, EcoMugDirectSource otomatik seçilir)
+
+# Detector / Visualization init
+/run/initialize
+
+# EcoMug parameters
+# Yüzey tipi: hsphere (yarı küre), zenith tarama için ideal
+/muonSource/ecomug/surface hsphere
+/muonSource/ecomug/hsphereRadius 1.4 m
+/muonSource/ecomug/hsphereCenter 0 0 0 m # To be exactly starting from bottom of the detector
+
+
+# Momentum range: atmospheric muon spectrum
+/muonSource/ecomug/minMomentum 0.1 GeV
+/muonSource/ecomug/maxMomentum 1000 GeV
+
+# Theta range: full hemisphere (nadir convention)
+#/muonSource/ecomug/minTheta 0 rad
+#/muonSource/ecomug/maxTheta 1.5707963 rad
+
+# Reproducibility (set 0 for random)
+#/muonSource/ecomug/seed 12345
+
+# Run
+/run/beamOn 1000000

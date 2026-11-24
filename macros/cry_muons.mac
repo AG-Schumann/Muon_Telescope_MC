@@ -1,0 +1,17 @@
+# CRY, muon-only: reference run against EcoMug
+/run/initialize
+
+/muonSource/cry/boxLength     1 m
+/muonSource/cry/planeZ        1.30 m
+/muonSource/cry/altitude      0 m
+/muonSource/cry/latitude      48.0
+/muonSource/cry/date          9-1-2026
+
+/muonSource/cry/returnMuons     true
+/muonSource/cry/returnElectrons false
+/muonSource/cry/returnGammas    false
+/muonSource/cry/returnNeutrons  false
+/muonSource/cry/returnProtons   false
+/muonSource/cry/returnPions     false
+
+/run/beamOn 100000

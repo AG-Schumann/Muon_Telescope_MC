@@ -1,0 +1,23 @@
+# GeMSE Muon Telescope: EcoMug Direct Source Test Run
+# Kullanım: ./Muon_Simulation -m macros/muon_flat.mac -o output_name
+# (-s flag VERILMEZ, EcoMugDirectSource otomatik seçilir)
+
+# Detector / Visualization init
+/run/initialize
+
+# EcoMug parameters
+# Yüzey tipi: sky (plane)
+
+/muonSource/ecomug/surface   sky
+/muonSource/ecomug/skySizeX  2 m
+/muonSource/ecomug/skySizeY  2 m
+/muonSource/ecomug/skyCenter 0 0 2.0 m
+
+
+# Momentum range: atmospheric muon spectrum
+/muonSource/ecomug/minMomentum 0.1 GeV
+/muonSource/ecomug/maxMomentum 1000 GeV
+
+
+# Run
+/run/beamOn 1000000

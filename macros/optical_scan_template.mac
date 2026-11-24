@@ -1,0 +1,24 @@
+# macros/optical_scan_template.mac
+# XPOS, YPOS, NEVENTS, WRAPPING and PMMAGRADE are replaced by optical_scan.sh.
+# Vertical 2 GeV/c mu- beam; all four modules are crossed at the same (x, y).
+
+/run/initialize
+/control/verbose 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+
+# Geometry: panels + light guides + PMT windows
+/detector/geometryMode 2
+/detector/optics/wrapping WRAPPING
+/detector/optics/pmmaGrade PMMAGRADE
+/detector/optics/storePhotons false
+/detector/rebuild
+
+# Beam
+/muonSource/beam/particle  mu-
+/muonSource/beam/momentum  2 GeV
+/muonSource/beam/position  XPOS YPOS 1150 mm
+/muonSource/beam/direction 0 0 -1
+
+/run/beamOn NEVENTS
