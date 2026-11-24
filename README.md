@@ -17,7 +17,7 @@ ROOT is required as well, since the output is written through
 Once the installation has been verified, run:
 
 ```bash
-git clone https://github.com/mucahit-kaya/Muon_Telescope_MC
+git clone https://github.com/AG-Schumann/Muon_Telescope_MC
 cd Muon_Telescope_MC
 mkdir build && cd build   # by convention, Geant4 projects are built out-of-source
 cmake ..
